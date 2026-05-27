@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* 复古蓝配色体系 */
-            --primary: #2c3e50;      /* 深复古蓝 */
-            --secondary: #34495e;    /* 中复古蓝 */
-            --accent: #5d7b9a;       /* 柔和蓝灰 */
-            --light: #ecf0f5;        /* 极浅蓝灰 */
-            --bg: #f8f9fc;           /* 背景底色 */
-            --text: #2c3e50;         /* 正文色 */
-            --soft: #5a6c7d;         /* 次要文字 */
-            --card: #ffffff;         /* 卡片底色 */
-            --shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #5d7b9a;
+            --light: #ecf0f5;
+            --bg: #f8f9fc;
+            --text: #2c3e50;
+            --soft: #5a6c7d;
+            --card: #ffffff;
+            --shadow: 0 4px 16px rgba(44, 62, 0.08);
             --radius: 16px;
         }
 
@@ -27,7 +26,6 @@
         }
 
         body {
-            /* 文艺字体组合 */
             font-family: 'Georgia', 'Noto Serif SC', 'Microsoft YaHei', serif;
             background-color: var(--bg);
             color: var(--text);
@@ -44,6 +42,7 @@
             box-shadow: var(--shadow);
         }
 
+        /* 头部居中 */
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -66,11 +65,25 @@
             letter-spacing: 1px;
         }
 
-        .tagline {
-            margin-top: 0.8rem;
+        .belief {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: var(--radius);
+            font-style: italic;
+            color: var(--primary);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .belief-en {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .belief-cn {
             font-size: 1rem;
             color: var(--soft);
-            font-style: italic;
         }
 
         .contact {
@@ -84,8 +97,10 @@
             margin-right: 0.4rem;
         }
 
+        /* 正文靠左 */
         section {
             margin-bottom: 3rem;
+            text-align: left;
         }
 
         h2 {
@@ -153,7 +168,7 @@
             font-size: 0.9rem;
         }
 
-        /* 文档卡片 */
+        /* PDF内链卡片 */
         .doc-card {
             border: 1px solid var(--light);
             border-radius: var(--radius);
@@ -186,7 +201,6 @@
             color: var(--soft);
         }
 
-        /* 标签网格 */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -210,7 +224,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 62, 80, 0.85);
+            background: rgba(44, 62, 0.85);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -233,7 +247,7 @@
             color: #fff;
             background: var(--primary);
             width: 2.2rem;
-            height: 2.2rem;
+            height: 2rem;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -255,9 +269,22 @@
         <div class="header">
             <h1 class="name">李许诺 | Jocelyn</h1>
             <p class="title">The University of Hong Kong · Humanities & Data Science</p>
-            <p class="tagline">Humanities × Data × Empathy</p>
+
+            <div class="belief">
+                <div class="belief-en">
+                    What I Believe<br>
+                    Technology explains the world.<br>
+                    Humanity gives it meaning.<br>
+                    Empathy connects them.
+                </div>
+                <div class="belief-cn">
+                    从 AI 心理疗愈研究，到音乐与社会变迁分析，<br>
+                    我始终在探索：数据如何理解人，而不是替代人。
+                </div>
+            </div>
+
             <div class="contact">
-                <i class="fa-solid fa-envelope"></i> Jocelyn_lxn@163.com &nbsp;|&nbsp;
+                <i class="fa-solid fa-envelope"></i> Jocelyn_lxn@163 &nbsp;|&nbsp;
                 <i class="fa-solid fa-phone"></i> (+86) 18621551601 &nbsp;|&nbsp;
                 <i class="fa-solid fa-comment"></i> Jocelyn1573
             </div>
@@ -268,7 +295,7 @@
             <div class="item">
                 <h3>香港大学</h3>
                 <div class="meta">2025.09 – 2029.06 | 人文与数据科技专业</div>
-                <p>核心课程：会计、编程入门、经济学、哲学、人类情感与AI伦理学、全球犯罪学、人文地理</p>
+                <p>会计、编程入门、经济学、哲学、人类情感与AI伦理学、全球犯罪学、人文地理</p>
             </div>
         </section>
 
@@ -287,12 +314,25 @@
             <h2><i class="fa-solid fa-folder-open"></i> 项目经历</h2>
 
             <div class="item">
+                <h3>AI心理疗愈产品对标分析（林间疗愈室 & 心澄AI）</h3>
+                <div class="meta">2026.05 – 2026.06 | 独立研究</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 独立完成两大AI疗愈产品全维度对标</li>
+                    <li><i class="fa-solid fa-check"></i> 构建10大模块评估体系：定位、人设、对话、情感理解、长期记忆、疗愈方法、隐私安全、多模态、商业化、口碑</li>
+                </ul>
+                <div class="doc-card" onclick="openPdf('Lyrics as Mirrors_ Tracing Chinese Social Shifts in Mandarin Popular Music from 2019 to 2024 - Google 文档.pdf')">
+                    <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> AI疗愈竞品分析报告</div>
+                    <div class="doc-desc">林间疗愈室 vs 心澄AI 全维度对标评估</div>
+                </div>
+            </div>
+
+            <div class="item">
                 <h3>现代中国大陆音乐发展与社会变迁研究（NLP）</h3>
                 <div class="meta">2025.11 – 2025.12 | 小组研究</div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> NLP歌词情感提取，分析2019–2024音乐与社会关联</li>
                 </ul>
-                <div class="doc-card" onclick="openPdf('音乐研究报告.pdf')">
+                <div class="doc-card" onclick="openPdf('Lyrics as Mirrors_ Tracing Chinese Social Shifts in Mandarin Popular Music from 2019 to 2024 - Google 文档.pdf')">
                     <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> 音乐研究报告</div>
                     <div class="doc-desc">2019–2024华语歌词NLP主题与情感分析</div>
                 </div>
@@ -304,7 +344,7 @@
                 <ul>
                     <li><i class="fa-solid fa-check"></i> 童年视角对社会伦理乱象的批判性研究</li>
                 </ul>
-                <div class="doc-card" onclick="openPdf('IB论文.pdf')">
+                <div class="doc-card" onclick="openPdf('无邪观乱世,童心悲德行.pdf')">
                     <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> IB论文全文</div>
                     <div class="doc-desc">童年视角揭示社会伦理乱象研究</div>
                 </div>
@@ -316,11 +356,11 @@
                 <ul>
                     <li><i class="fa-solid fa-check"></i> AI语音陪伴小程序，缓解独居老人孤独感</li>
                 </ul>
-                <div class="doc-card" onclick="openPdf('CTB-PPT.pdf')">
+                <div class="doc-card" onclick="openPdf('老人心理健康主题研究及创新产品设计最终稿.pdf')">
                     <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> CTB项目PPT</div>
                     <div class="doc-desc">老人心理健康研究与产品设计展示</div>
                 </div>
-                <div class="doc-card" onclick="openPdf('CTB-论文.pdf')">
+                <div class="doc-card" onclick="openPdf('老人心理健康问题研究及产品解决方案设计.pdf')">
                     <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> CTB项目论文</div>
                     <div class="doc-desc">独居老人心理调研与AI产品方案</div>
                 </div>
@@ -383,7 +423,6 @@
         </section>
     </div>
 
-    <!-- PDF弹窗 -->
     <div class="pdf-modal" id="pdfModal">
         <div class="pdf-container">
             <div class="close-btn" onclick="closePdf()">×</div>
@@ -405,11 +444,8 @@
             iframe.src = '';
         }
 
-        // 点击背景关闭弹窗
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closePdf();
-            }
+            if (e.target === modal) closePdf();
         });
     </script>
 </body>

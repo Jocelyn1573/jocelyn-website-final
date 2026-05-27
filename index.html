@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李许诺 | Jocelyn</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* 复古蓝配色体系 */
+            --primary: #2c3e50;      /* 深复古蓝 */
+            --secondary: #34495e;    /* 中复古蓝 */
+            --accent: #5d7b9a;       /* 柔和蓝灰 */
+            --light: #ecf0f5;        /* 极浅蓝灰 */
+            --bg: #f8f9fc;           /* 背景底色 */
+            --text: #2c3e50;         /* 正文色 */
+            --soft: #5a6c7d;         /* 次要文字 */
+            --card: #ffffff;         /* 卡片底色 */
+            --shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 文艺字体组合 */
+            font-family: 'Georgia', 'Noto Serif SC', 'Microsoft YaHei', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 3rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--light);
+            padding-bottom: 2rem;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            color: var(--soft);
+            font-style: italic;
+        }
+
+        .contact {
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--soft);
+        }
+
+        .contact i {
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--light);
+        }
+
+        .item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            background: #e9eff6;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--soft);
+            margin-bottom: 0.8rem;
+        }
+
+        ul {
+            padding-left: 1.8rem;
+            font-size: 1rem;
+            color: var(--soft);
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        ul li i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* 文档卡片 */
+        .doc-card {
+            border: 1px solid var(--light);
+            border-radius: var(--radius);
+            padding: 1.3rem;
+            margin-top: 1.2rem;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .doc-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+            background: #f4f7fb;
+        }
+
+        .doc-title {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .doc-title i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .doc-desc {
+            font-size: 0.9rem;
+            color: var(--soft);
+        }
+
+        /* 标签网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* PDF弹窗 */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .pdf-container {
+            width: 90%;
+            height: 90%;
+            background: #fff;
+            border-radius: var(--radius);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            color: #fff;
+            background: var(--primary);
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--radius);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">李许诺 | Jocelyn</h1>
+            <p class="title">The University of Hong Kong · Humanities & Data Science</p>
+            <p class="tagline">Humanities × Data × Empathy</p>
+            <div class="contact">
+                <i class="fa-solid fa-envelope"></i> Jocelyn_lxn@163.com &nbsp;|&nbsp;
+                <i class="fa-solid fa-phone"></i> (+86) 18621551601 &nbsp;|&nbsp;
+                <i class="fa-solid fa-comment"></i> Jocelyn1573
+            </div>
+        </div>
+
+        <section>
+            <h2><i class="fa-solid fa-graduation-cap"></i> 教育背景</h2>
+            <div class="item">
+                <h3>香港大学</h3>
+                <div class="meta">2025.09 – 2029.06 | 人文与数据科技专业</div>
+                <p>核心课程：会计、编程入门、经济学、哲学、人类情感与AI伦理学、全球犯罪学、人文地理</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-briefcase"></i> 实习经历</h2>
+            <div class="item">
+                <h3>伟创力国际有限公司（Flex International Ltd.）</h3>
+                <div class="meta">2025.07 – 2025.08 | 实习生</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> EMMC芯片物流规划、产品样本预算分配表制作</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-folder-open"></i> 项目经历</h2>
+
+            <div class="item">
+                <h3>现代中国大陆音乐发展与社会变迁研究（NLP）</h3>
+                <div class="meta">2025.11 – 2025.12 | 小组研究</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> NLP歌词情感提取，分析2019–2024音乐与社会关联</li>
+                </ul>
+                <div class="doc-card" onclick="openPdf('音乐研究报告.pdf')">
+                    <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> 音乐研究报告</div>
+                    <div class="doc-desc">2019–2024华语歌词NLP主题与情感分析</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>IB论文：《城南旧事》童年视角与社会伦理</h3>
+                <div class="meta">2024.04 – 2024.10</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 童年视角对社会伦理乱象的批判性研究</li>
+                </ul>
+                <div class="doc-card" onclick="openPdf('IB论文.pdf')">
+                    <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> IB论文全文</div>
+                    <div class="doc-desc">童年视角揭示社会伦理乱象研究</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>CTB老人心理健康产品设计</h3>
+                <div class="meta">2022.09 – 2023.06 | 团队队长 | 全国前10%</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> AI语音陪伴小程序，缓解独居老人孤独感</li>
+                </ul>
+                <div class="doc-card" onclick="openPdf('CTB-PPT.pdf')">
+                    <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> CTB项目PPT</div>
+                    <div class="doc-desc">老人心理健康研究与产品设计展示</div>
+                </div>
+                <div class="doc-card" onclick="openPdf('CTB-论文.pdf')">
+                    <div class="doc-title"><i class="fa-solid fa-file-pdf"></i> CTB项目论文</div>
+                    <div class="doc-desc">独居老人心理调研与AI产品方案</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>自媒体视频剪辑与账号运营</h3>
+                <div class="meta">2024.01 – 2024.11</div>
+                <ul>
+                    <li><i class="fa-brands fa-bilibili"></i> B站：第五人格教学视频，单条4W+播放</li>
+                    <li><i class="fa-brands fa-instagram"></i> 小红书：追星内容，25W+播放、1.2W+点赞</li>
+                    <li><i class="fa-brands fa-tiktok"></i> 抖音：追星内容，5W+播放、6K+点赞</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-handshake-angle"></i> 社会实践</h2>
+            <div class="item">
+                <h3>Bridge社团 · 联合创始人</h3>
+                <div class="meta">2023.09 – 2025.09</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 搭建长者与青少年沟通桥梁，敬老院陪伴活动</li>
+                </ul>
+            </div>
+            <div class="item">
+                <h3>Oreo英语公益 · 线上志愿教师</h3>
+                <div class="meta">2022.09 – 2023.12</div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 为200+社区儿童提供线上英语教学</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-trophy"></i> 学术奖项</h2>
+            <div class="grid">
+                <div class="tag">CTB全国前10% · 全球入围</div>
+                <div class="tag">国际地理竞赛铜奖</div>
+                <div class="tag">国际语言学奥赛优异奖</div>
+                <div class="tag">NEC经济挑战赛入围全国</div>
+                <div class="tag">Environthon环境竞赛优异奖</div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-sliders"></i> 技能与爱好</h2>
+            <div class="item">
+                <h3>语言能力</h3>
+                <p>中文（母语）｜英语（托福116，阅读/听力30，口语/写作28）</p>
+            </div>
+            <div class="item">
+                <h3>AI工具</h3>
+                <p>元宝、Deepseek、ChatGPT、豆包等AI大模型熟练运用</p>
+            </div>
+            <div class="item">
+                <h3>兴趣特长</h3>
+                <p>钢琴（ABRSM八级·优异）、拉丁舞、摄影、歌唱、飞盘（市/全国冠军）</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- PDF弹窗 -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-container">
+            <div class="close-btn" onclick="closePdf()">×</div>
+            <iframe id="pdfIframe" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('pdfModal');
+        const iframe = document.getElementById('pdfIframe');
+
+        function openPdf(fileName) {
+            iframe.src = fileName;
+            modal.style.display = 'flex';
+        }
+
+        function closePdf() {
+            modal.style.display = 'none';
+            iframe.src = '';
+        }
+
+        // 点击背景关闭弹窗
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closePdf();
+            }
+        });
+    </script>
+</body>
+</html>
